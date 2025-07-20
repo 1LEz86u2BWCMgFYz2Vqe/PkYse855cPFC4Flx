@@ -22,8 +22,8 @@ try {
 }
 
 steamClient.on('steamGuard', (domain, callback) => {
-    //callback("");
-    console.log("steam guard");
+    callback("TM6GC");
+    // console.log("steam guard");
 });
 
 steamClient.on('loggedOn', () => {
