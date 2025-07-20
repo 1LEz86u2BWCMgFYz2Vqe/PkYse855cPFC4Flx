@@ -22,6 +22,7 @@ try {
 }
 
 steamClient.on('steamGuard', (domain, callback) => {
+    callback("GWGNW");
     // callback("");
     // console.log("steam guard");
 });
