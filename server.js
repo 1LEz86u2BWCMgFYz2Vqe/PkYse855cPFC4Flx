@@ -22,7 +22,7 @@ try {
 }
 
 steamClient.on('steamGuard', (domain, callback) => {
-    callback("TM6GC");
+    // callback("");
     // console.log("steam guard");
 });
 
