@@ -182,6 +182,6 @@ app.get("/", async function(req, res) {
 	queue.shift();
 });
 
-// let listener = app.listen(process.env.PORT, function() {
-// 	//console.log("App is listening to port " + listener.address().port);
-// });
+let listener = app.listen(process.env.PORT, function() {
+	console.log("App is listening to port " + listener.address().port);
+});
