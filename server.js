@@ -130,9 +130,16 @@ const LogInSteam = () => {
         console.log("Failed to log in");
     }
     
+	let steamCode = process.env.STEAMGUARD;
     steamClient.on('steamGuard', (domain, callback) => {
-        // callback(process.env.STEAMGUARD);
-        // console.log("steam guard");
+		console.log("steam guard");
+		if(steamCode){
+			callback(steamCode);
+			steamCode = null;
+			console.log("trying the code");
+		}else{
+			console.log("no code");
+		}
     });
     
     steamClient.on('loggedOn', () => {
