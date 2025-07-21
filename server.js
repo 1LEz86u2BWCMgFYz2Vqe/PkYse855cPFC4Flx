@@ -131,7 +131,7 @@ const LogInSteam = () => {
     }
     
     steamClient.on('steamGuard', (domain, callback) => {
-        // callback("");
+        callback("DC34Y");
         console.log("steam guard");
     });
     
