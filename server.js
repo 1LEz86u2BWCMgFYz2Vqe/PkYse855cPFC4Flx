@@ -34,7 +34,7 @@ const PostComment = async(str, ownerId, forumId, postId) => {
         const data = await response.text();
         //console.log(data);
     } catch (error) {
-        console.error('Error:', error);
+        console.log('Error:', error);
     }
 }
 
@@ -131,7 +131,7 @@ const LogInSteam = () => {
     }
     
     steamClient.on('steamGuard', (domain, callback) => {
-        // callback("");
+        // callback(process.env.STEAMGUARD);
         // console.log("steam guard");
     });
     
@@ -156,22 +156,22 @@ const LogInSteam = () => {
 				password: process.env.STEAMPASSWORD,
 				apiKey: process.env.STEAMAPIKEY,
 			}); 
-			steamClient.on('loggedOn', () => {
-				steamClient.setPersona(SteamUser.EPersonaState.Online);
-				steamClient.gamesPlayed([
-					3557620,
-					570,
-					220,
-					730,
-					440,          
-				]);
-			});
-			steamClient.on('error', (err) => {
-				console.log(`Error with account ${steamAccName}:`, err);
-			});
 		}catch(e){
 			console.log("Failed to log in");
 		}
+		steamClient.on('loggedOn', () => {
+			steamClient.setPersona(SteamUser.EPersonaState.Online);
+			steamClient.gamesPlayed([
+				3557620,
+				570,
+				220,
+				730,
+				440,          
+			]);
+		});
+		steamClient.on('error', (err) => {
+			console.log(`Error with account ${steamAccName}:`, err);
+		});
     });
 }
 LogInSteam();
