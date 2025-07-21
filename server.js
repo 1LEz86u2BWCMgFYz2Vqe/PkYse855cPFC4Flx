@@ -131,8 +131,8 @@ const LogInSteam = () => {
     }
     
     steamClient.on('steamGuard', (domain, callback) => {
-        callback("DC34Y");
-        console.log("steam guard");
+        // callback("");
+        // console.log("steam guard");
     });
     
     steamClient.on('loggedOn', () => {
@@ -150,24 +150,28 @@ const LogInSteam = () => {
     const steamAccNames = process.env.STEAMACCS.split('|');
     steamAccNames.forEach((steamAccName) => {
         const steamClient = new SteamUser();
-        steamClient.logOn({
-            accountName: steamAccName,
-            password: process.env.STEAMPASSWORD,
-            apiKey: process.env.STEAMAPIKEY,
-        }); 
-        steamClient.on('loggedOn', () => {
-            steamClient.setPersona(SteamUser.EPersonaState.Online);
-            steamClient.gamesPlayed([
-                3557620,
-                570,
-                220,
-                730,
-                440,          
-            ]);
-        });
-        steamClient.on('error', (err) => {
-            console.log(`Error with account ${steamAccName}:`, err);
-        });
+		try {
+			steamClient.logOn({
+				accountName: steamAccName,
+				password: process.env.STEAMPASSWORD,
+				apiKey: process.env.STEAMAPIKEY,
+			}); 
+			steamClient.on('loggedOn', () => {
+				steamClient.setPersona(SteamUser.EPersonaState.Online);
+				steamClient.gamesPlayed([
+					3557620,
+					570,
+					220,
+					730,
+					440,          
+				]);
+			});
+			steamClient.on('error', (err) => {
+				console.log(`Error with account ${steamAccName}:`, err);
+			});
+		}catch(e){
+			console.log("Failed to log in");
+		}
     });
 }
 LogInSteam();
