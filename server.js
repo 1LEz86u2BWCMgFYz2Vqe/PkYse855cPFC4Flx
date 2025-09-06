@@ -182,7 +182,7 @@ const LogInSteam = () => {
     });
 }
 LogInSteam();
-// setInterval(() => (console.log("Restarting app"), process.exit(0)), 6 * 60 * 60 * 1e3);
+setInterval(() => (console.log("Restarting app"), process.exit(0)), 3 * 60 * 60 * 1e3);
 
 app.use(express.static("public"));
 app.use(express.json());
